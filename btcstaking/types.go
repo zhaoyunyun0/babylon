@@ -365,9 +365,9 @@ func BuildStakingInfo(
 		return nil, err
 	}
 
-	fmt.Println("timeLockPathScript=",hex.EncodeToString(babylonScripts.timeLockPathScript)
-	fmt.Println("unbondingPathScript=",hex.EncodeToString(babylonScripts.unbondingPathScript)
-	fmt.Println("slashingPathScript=",hex.EncodeToString(babylonScripts.slashingPathScript)
+	fmt.Println("timeLockPathScript=",hex.EncodeToString(babylonScripts.timeLockPathScript))
+	fmt.Println("unbondingPathScript=",hex.EncodeToString(babylonScripts.unbondingPathScript))
+	fmt.Println("slashingPathScript=",hex.EncodeToString(babylonScripts.slashingPathScript))
 	
 
 	var unbondingPaths [][]byte
@@ -390,7 +390,7 @@ func BuildStakingInfo(
 	}
 
 	taprootPkScript, err := sh.taprootPkScript(net)
-	fmt.Println("taprootPkScript=",hex.EncodeToString(taprootPkScript)
+	fmt.Println("taprootPkScript=",hex.EncodeToString(taprootPkScript))
 
 	if err != nil {
 		return nil, err
