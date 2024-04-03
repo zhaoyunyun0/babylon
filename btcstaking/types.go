@@ -279,10 +279,14 @@ func newBabylonScriptPaths(
 	}
 
 	timeLockPathScript, err := buildTimeLockScript(stakerKey, lockTime)
+	fmt.Println("timeLockPathScript=",hex.EncodeToString(timeLockPathScript))
+
 
 	if err != nil {
 		return nil, err
 	}
+	
+
 
 	covenantMultisigScript, err := buildMultiSigScript(
 		covenantKeys,
@@ -292,12 +296,16 @@ func newBabylonScriptPaths(
 		// script will always error
 		false,
 	)
+	fmt.Println("covenantMultisigScript=",hex.EncodeToString(covenantMultisigScript))
+
 
 	if err != nil {
 		return nil, err
 	}
 
 	stakerSigScript, err := buildSingleKeySigScript(stakerKey, true)
+	fmt.Println("stakerSigScript=",hex.EncodeToString(stakerSigScript))
+
 
 	if err != nil {
 		return nil, err
@@ -343,7 +351,8 @@ func BuildStakingInfo(
 	net *chaincfg.Params,
 ) (*StakingInfo, error) {
 	unspendableKeyPathKey := unspendableKeyPathInternalPubKey()
-
+	fmt.Println("unspendableKeyPathKey=",hex.EncodeToString(unspendableKeyPathKey.SerializeCompressed()))
+	
 	babylonScripts, err := newBabylonScriptPaths(
 		stakerKey,
 		fpKeys,
