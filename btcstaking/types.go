@@ -365,11 +365,17 @@ func BuildStakingInfo(
 		return nil, err
 	}
 
+	fmt.Println("timeLockPathScript=",hex.EncodeToString(babylonScripts.timeLockPathScript)
+	fmt.Println("unbondingPathScript=",hex.EncodeToString(babylonScripts.unbondingPathScript)
+	fmt.Println("slashingPathScript=",hex.EncodeToString(babylonScripts.slashingPathScript)
+	
+
 	var unbondingPaths [][]byte
 	unbondingPaths = append(unbondingPaths, babylonScripts.timeLockPathScript)
 	unbondingPaths = append(unbondingPaths, babylonScripts.unbondingPathScript)
 	unbondingPaths = append(unbondingPaths, babylonScripts.slashingPathScript)
 
+	
 	timeLockLeafHash := txscript.NewBaseTapLeaf(babylonScripts.timeLockPathScript).TapHash()
 	unbondingPathLeafHash := txscript.NewBaseTapLeaf(babylonScripts.unbondingPathScript).TapHash()
 	slashingLeafHash := txscript.NewBaseTapLeaf(babylonScripts.slashingPathScript).TapHash()
@@ -384,6 +390,7 @@ func BuildStakingInfo(
 	}
 
 	taprootPkScript, err := sh.taprootPkScript(net)
+	fmt.Println("taprootPkScript=",hex.EncodeToString(taprootPkScript)
 
 	if err != nil {
 		return nil, err
