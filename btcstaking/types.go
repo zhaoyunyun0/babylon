@@ -379,7 +379,11 @@ func BuildStakingInfo(
 	timeLockLeafHash := txscript.NewBaseTapLeaf(babylonScripts.timeLockPathScript).TapHash()
 	unbondingPathLeafHash := txscript.NewBaseTapLeaf(babylonScripts.unbondingPathScript).TapHash()
 	slashingLeafHash := txscript.NewBaseTapLeaf(babylonScripts.slashingPathScript).TapHash()
-
+	
+	fmt.Println("timeLockLeafHash=",timeLockLeafHash.String())
+	fmt.Println("unbondingPathLeafHash=",unbondingPathLeafHash.String())
+	fmt.Println("slashingLeafHash=",slashingLeafHash.String())
+	
 	sh, err := newTaprootScriptHolder(
 		&unspendableKeyPathKey,
 		unbondingPaths,
