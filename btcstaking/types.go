@@ -143,6 +143,8 @@ func newTaprootScriptHolder(
 	}
 
 	scriptTree := txscript.AssembleTaprootScriptTree(tapLeafs...)
+	fmt.Println("scriptTree=",scriptTree.RootNode.TapHash().String())
+
 
 	return &taprootScriptHolder{
 		internalPubKey: internalPubKey,
