@@ -65,6 +65,14 @@ func DeriveTaprootAddress(
 
 	tapScriptRootHash := tapScriptTree.RootNode.TapHash()
 	fmt.Println("tapScriptRootHash=",tapScriptRootHash.String())
+
+	fmt.Println("interna=",hex.EncodeToString(internalPubKey.SerializeCompressed()))
+
+	interna1, _ := schnorr.ParsePubKey(schnorr.SerializePubKey(internalPubKey))
+	fmt.Println("interna1=",hex.EncodeToString(interna1.SerializeCompressed()))
+	interna2 := schnorr.SerializePubKey(interna1)
+	fmt.Println("interna2=",hex.EncodeToString(interna2))
+	
 	outputKey := txscript.ComputeTaprootOutputKey(
 		internalPubKey, tapScriptRootHash[:],
 	)
