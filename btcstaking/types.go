@@ -64,13 +64,16 @@ func DeriveTaprootAddress(
 	net *chaincfg.Params) (*btcutil.AddressTaproot, error) {
 
 	tapScriptRootHash := tapScriptTree.RootNode.TapHash()
-
+	fmt.Println("tapScriptRootHash=",tapScriptRootHash.String())
 	outputKey := txscript.ComputeTaprootOutputKey(
 		internalPubKey, tapScriptRootHash[:],
 	)
+	fmt.Println("outputKey=",hex.EncodeToString(outputKey.SerializeCompressed()))
+
 
 	address, err := btcutil.NewAddressTaproot(
 		schnorr.SerializePubKey(outputKey), net)
+	fmt.Println("address=",address.EncodeAddress())
 
 	if err != nil {
 		return nil, fmt.Errorf("error encoding Taproot address: %v", err)
